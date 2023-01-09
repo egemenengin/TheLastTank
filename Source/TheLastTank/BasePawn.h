@@ -25,17 +25,21 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+protected:
+	void RotateTurret(FVector Target, float DeltaTime);
 
 private:
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite,  Category = "Projectile", meta = (AllowPrivateAccess = "true"))
- 	int32 ProjectileSpawnDelay = 3;
+ 	int32 ProjectileSpawnDelay = 3.f;
+
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite,  Category = "Projectile", meta = (AllowPrivateAccess = "true"))
+ 	float InterpSpeed = 5.f;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
  	class UCapsuleComponent* CapsuleComp;

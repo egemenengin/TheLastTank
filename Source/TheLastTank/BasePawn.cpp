@@ -33,13 +33,21 @@ void ABasePawn::BeginPlay()
 void ABasePawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
-// Called to bind functionality to input
-void ABasePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void ABasePawn::RotateTurret(FVector Target, float DeltaTime)
 {
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	FVector ToTarget = Target - TurretMesh->GetComponentLocation();
+	FRotator TargetRotation = FRotator(0.f, ToTarget.Rotation().Yaw, 0.f);
+	TurretMesh->SetWorldRotation(
+		FMath::RInterpTo(
+			TurretMesh->GetComponentRotation(),
+			TargetRotation,
+			DeltaTime,
+			InterpSpeed)
+		);
 
 }
+
+
 
