@@ -27,6 +27,9 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	void HandleDestruction();
+
+	APlayerController* GetTankPlayerController() const{ return PlayerController; }
 private:	
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* TankCam;
@@ -40,6 +43,7 @@ private:
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite,  Category = "Movement", meta = (AllowPrivateAccess = "true"))
 	float TurnSpeed = 20.f;
 
+	
 	UPROPERTY()
 	class APlayerController* PlayerController;
 
@@ -64,5 +68,6 @@ public:
 	void Move(const FInputActionValue& Value);	
 	// Handle inputs of turning of the tank  
 	void Turn(const FInputActionValue& Value);
-
+	//Handle input of fire
+	void FireHandle(const FInputActionValue& Value);
 };

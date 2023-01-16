@@ -2,7 +2,8 @@
 
 #include "BasePawn.h"
 #include "Components/CapsuleComponent.h"
-
+#include "TimerManager.h"
+#include "Projectile.h"
 // Sets default values
 ABasePawn::ABasePawn()
 {
@@ -49,5 +50,39 @@ void ABasePawn::RotateTurret(FVector Target, float DeltaTime)
 
 }
 
+void ABasePawn::Fire()
+{
+	if(CanShoot)
+	{
+		CanShoot = false;
+		AProjectile* newProjectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass, ProjectileSpawnPoint->GetComponentLocation(), ProjectileSpawnPoint->GetComponentRotation() );
+		newProjectile->SetOwner(this);
+		
+		DrawDebugSphere(
+			GetWorld(), 
+			ProjectileSpawnPoint->GetComponentLocation(), 
+			20.f, 
+			12, 
+			FColor::Blue, 
+			false, 
+			5.f);
+		
+	}
+	
+	
+		
+}
 
+void ABasePawn::Reload()
+{
+	CanShoot = true;
+}
+
+
+void ABasePawn::HandleDestruction()
+{
+	//TODO: Visual/sound effects
+
+	
+}
 

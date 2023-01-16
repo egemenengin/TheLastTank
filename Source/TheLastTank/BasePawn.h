@@ -30,15 +30,28 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
+	
+	void HandleDestruction();
 protected:
 	void RotateTurret(FVector Target, float DeltaTime);
 
-private:
+	void Fire();
+	void Reload();
+
+protected:
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite,  Category = "Projectile", meta = (AllowPrivateAccess = "true"))
- 	int32 ProjectileSpawnDelay = 3.f;
+ 	int32 ReloadSpeed = 2;
 
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite,  Category = "Projectile", meta = (AllowPrivateAccess = "true"))
+ 	bool CanShoot = true;
+
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite,  Category = "Projectile", meta = (AllowPrivateAccess = "true"))
+ 	FTimerHandle FireTimeHandler;
+
+	
+
+private:
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
  	float InterpSpeed = 5.f;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
@@ -52,4 +65,7 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	USceneComponent* ProjectileSpawnPoint;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<class AProjectile> ProjectileClass;
 };

@@ -33,7 +33,7 @@ void ATank::BeginPlay()
             Subsystem->AddMappingContext(InputMapping, 0);
         }
     }
-
+    GetWorldTimerManager().SetTimer(FireTimeHandler, this, &ATank::Reload, ReloadSpeed, true); //TODO this should be in beginplay
 }
 
 // Called every frame
@@ -61,6 +61,8 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
     
     PlayerEnhancedInputComponent->BindAction(InputMove, ETriggerEvent::Triggered, this, &ATank::Move);
     PlayerEnhancedInputComponent->BindAction(InputTurn, ETriggerEvent::Triggered, this, &ATank::Turn);
+
+    PlayerEnhancedInputComponent->BindAction(InputFire, ETriggerEvent::Started, this, &ATank::FireHandle);
 }
 
 void ATank::Move(const FInputActionValue& Value)
@@ -73,5 +75,21 @@ void ATank::Turn(const FInputActionValue& Value)
 {
     FRotator deltaRotation = FRotator(0, Value.Get<float>(), 0) * UGameplayStatics::GetWorldDeltaSeconds(this) * TurnSpeed;
     AddActorLocalRotation(deltaRotation, true);
+}
+
+void ATank::FireHandle(const FInputActionValue& Value)
+{
+    if(Value.Get<bool>())
+    {
+        Fire();
+    }
+}
+
+void ATank::HandleDestruction()
+{
+    Super::HandleDestruction();
+
+    SetActorHiddenInGame(true);
+    SetActorTickEnabled(false);
 }
 

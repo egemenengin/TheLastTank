@@ -16,6 +16,38 @@
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
 	},
 	{
+		"file": "C:\\Users\\egeme\\Desktop\\projects\\UnrealEngine5Projects\\TheLastTank\\Source\\TheLastTank\\HealthComponent.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Users\\egeme\\Desktop\\projects\\UnrealEngine5Projects\\TheLastTank\\.vscode\\compileCommands_TheLastTank\\TheLastTank.255.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\egeme\\Desktop\\projects\\UnrealEngine5Projects\\TheLastTank\\Source\\TheLastTank\\HealthComponent.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Users\\egeme\\Desktop\\projects\\UnrealEngine5Projects\\TheLastTank\\.vscode\\compileCommands_TheLastTank\\TheLastTank.255.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\egeme\\Desktop\\projects\\UnrealEngine5Projects\\TheLastTank\\Source\\TheLastTank\\Projectile.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Users\\egeme\\Desktop\\projects\\UnrealEngine5Projects\\TheLastTank\\.vscode\\compileCommands_TheLastTank\\TheLastTank.255.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\egeme\\Desktop\\projects\\UnrealEngine5Projects\\TheLastTank\\Source\\TheLastTank\\Projectile.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Users\\egeme\\Desktop\\projects\\UnrealEngine5Projects\\TheLastTank\\.vscode\\compileCommands_TheLastTank\\TheLastTank.255.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
 		"file": "C:\\Users\\egeme\\Desktop\\projects\\UnrealEngine5Projects\\TheLastTank\\Source\\TheLastTank\\Tank.cpp",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\cl.exe",
@@ -49,6 +81,22 @@
 	},
 	{
 		"file": "C:\\Users\\egeme\\Desktop\\projects\\UnrealEngine5Projects\\TheLastTank\\Source\\TheLastTank\\TheLastTank.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Users\\egeme\\Desktop\\projects\\UnrealEngine5Projects\\TheLastTank\\.vscode\\compileCommands_TheLastTank\\TheLastTank.255.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\egeme\\Desktop\\projects\\UnrealEngine5Projects\\TheLastTank\\Source\\TheLastTank\\TheLastTankGameMode.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Users\\egeme\\Desktop\\projects\\UnrealEngine5Projects\\TheLastTank\\.vscode\\compileCommands_TheLastTank\\TheLastTank.255.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\egeme\\Desktop\\projects\\UnrealEngine5Projects\\TheLastTank\\Source\\TheLastTank\\TheLastTankGameMode.h",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\cl.exe",
 			"@C:\\Users\\egeme\\Desktop\\projects\\UnrealEngine5Projects\\TheLastTank\\.vscode\\compileCommands_TheLastTank\\TheLastTank.255.rsp"
