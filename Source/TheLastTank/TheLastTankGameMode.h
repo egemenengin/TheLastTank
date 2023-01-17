@@ -21,13 +21,19 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void StartGame();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void GameOver(bool bWonGame);
+
 public:
 
 	void ActorDied(AActor* DeadActor);
+	
 
 private:
 
 	void HandleGameStart();
+
+	int32 GetNumberOfTower();
 
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "Player" , meta = (AllowPrivateAccess = "true"))
 	class ATank* Tank;
@@ -43,5 +49,10 @@ private:
 
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "Start Game" , meta = (AllowPrivateAccess = "true"))
 	float StartDelay = 5.f;
+
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "Start Game" , meta = (AllowPrivateAccess = "true"))
+	int32 RemainingTower = 0; 
+
+
 
 };

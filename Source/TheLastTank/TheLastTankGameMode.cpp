@@ -23,11 +23,18 @@ void ATheLastTankGameMode::ActorDied(AActor* DeadActor)
             {
                 TheLastTankPlayerController->SetPlayerEnabledState(false);
             } 
+
+            GameOver(false);
         }
         else if(DeadActor->ActorHasTag(TowerTag))
         {
             ATower* Tower = Cast<ATower>(DeadActor);
             Tower->HandleDestruction();
+            RemainingTower--;
+            if(RemainingTower <= 0)
+            {
+                GameOver(true);
+            }
         }
         else
         {
@@ -44,6 +51,8 @@ void ATheLastTankGameMode::HandleGameStart()
     Tank  = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this,0));
     TheLastTankPlayerController = Cast<ATheLastTankPlayerController>(UGameplayStatics::GetPlayerController(this, 0));
 
+    RemainingTower = GetNumberOfTower();
+    
     StartGame();
     
     if(TheLastTankPlayerController)
@@ -57,3 +66,10 @@ void ATheLastTankGameMode::HandleGameStart()
     }
 }
 
+
+int32 ATheLastTankGameMode::GetNumberOfTower()
+{
+    TArray<AActor*> Towers;
+    UGameplayStatics::GetAllActorsOfClass(this, ATower::StaticClass(), Towers);
+    return Towers.Num();
+}
