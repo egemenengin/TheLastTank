@@ -5,6 +5,9 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 
 #include "Kismet/GameplayStatics.h"
+#include "Particles/ParticleSystemComponent.h"
+#include "Sound/SoundBase.h"
+
 // Sets default values
 AProjectile::AProjectile()
 {
@@ -12,8 +15,14 @@ AProjectile::AProjectile()
 	PrimaryActorTick.bCanEverTick = true;
 
 	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Projectile Mesh") );
-	
+	RootComponent = ProjectileMesh;
+
 	MovementComp = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Movement Comp") );
+
+
+	TrailParticles = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Smoke Trail"));
+	TrailParticles->SetupAttachment(RootComponent);
+
 	MovementComp->MaxSpeed = 1500.f;
 	MovementComp->InitialSpeed = 1500.f; 
 }
@@ -26,6 +35,10 @@ void AProjectile::BeginPlay()
 	//TODO ADD LIFETIME GetWorldTimerManager().SetTimer(ProjectileTimeHandler, this, &AActor::Destroy(), LifeTime, false);
 	
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHitHandle);
+	if(LaunchSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, LaunchSound, GetActorLocation(), 0.5f);
+	}
 }
 
 // Called every frame
@@ -38,11 +51,26 @@ void AProjectile::Tick(float DeltaTime)
 void AProjectile::OnHitHandle(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& HitResult){
 	//UE_LOG(LogTemp, Display, TEXT("HIT %s TO %s COMP: %s"), *(HitComp->GetName()), *(OtherActor->GetName()), *(OtherComp->GetName()));
 
-	if(GetOwner() == nullptr) return;
+	if(GetOwner() == nullptr) {
+		Destroy();
+		return;
+	}
 
-	if(OtherActor && OtherActor != this && OtherActor != GetOwner())
+	if( (OtherActor !=nullptr) && (OtherActor != this) && (OtherActor != GetOwner()))
 	{
 		UGameplayStatics::ApplyDamage(OtherActor, Damage, GetOwner()->GetInstigatorController(), this, UDamageType::StaticClass());
+		if(HitParticles)
+		{
+			UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, GetActorLocation(), GetActorRotation(), true);
+		}
+		if(HitSound)
+		{
+			UGameplayStatics::PlaySoundAtLocation(this, HitSound, GetActorLocation());
+		}
+		if(HitCameraShakeClass)
+		{
+			GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(HitCameraShakeClass);
+		}
 		Destroy();
 	}
 	

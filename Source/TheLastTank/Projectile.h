@@ -38,6 +38,22 @@ private:
 
 	FTimerHandle ProjectileTimeHandler;
 
+	UPROPERTY(EditAnyWhere, Category = "Effects")
+	class UParticleSystem* HitParticles;
+	
+	UPROPERTY(VisibleAnyWhere, Category = "Effects")
+	class UParticleSystemComponent* TrailParticles;
+
+	UPROPERTY(EditAnyWhere, Category = "Effects")
+	class USoundBase* LaunchSound;
+
+	UPROPERTY(EditAnyWhere, Category = "Effects")
+	USoundBase* HitSound;
+
+	UPROPERTY(EditAnyWhere, Category = "Effects")
+	TSubclassOf<class UCameraShakeBase> HitCameraShakeClass;
+
+
 	UFUNCTION()
 	void OnHitHandle(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& HitResult);
 };

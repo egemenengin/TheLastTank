@@ -4,6 +4,10 @@
 #include "Components/CapsuleComponent.h"
 #include "TimerManager.h"
 #include "Projectile.h"
+#include "Kismet/GameplayStatics.h"
+#include "Particles/ParticleSystemComponent.h"
+#include "Sound/SoundBase.h"
+
 // Sets default values
 ABasePawn::ABasePawn()
 {
@@ -55,7 +59,10 @@ void ABasePawn::Fire()
 	if(CanShoot)
 	{
 		CanShoot = false;
-		AProjectile* newProjectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass, ProjectileSpawnPoint->GetComponentLocation(), ProjectileSpawnPoint->GetComponentRotation() );
+
+		FVector SpawnLocation = ProjectileSpawnPoint->GetComponentLocation();
+		FRotator SpawnRotation = ProjectileSpawnPoint->GetComponentRotation();
+		AProjectile* newProjectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
 		newProjectile->SetOwner(this);
 		
 		DrawDebugSphere(
@@ -81,8 +88,20 @@ void ABasePawn::Reload()
 
 void ABasePawn::HandleDestruction()
 {
-	//TODO: Visual/sound effects
+	if(DeathParticles)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(this, DeathParticles, GetActorLocation());
+	}
 
+	if(DeathSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, DeathSound, GetActorLocation());
+	}
+
+	if(DeathCameraShakeClass)
+	{
+		GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(DeathCameraShakeClass);
+	}
 	
 }
 

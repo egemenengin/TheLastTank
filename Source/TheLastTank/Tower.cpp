@@ -31,8 +31,14 @@ void ATower::Tick(float DeltaTime)
 
 bool ATower::IsInRange()
 {
+    if(PlayerTank == nullptr)
+    {
+        return false;
+    }
+
     float DistToTank = FVector::Dist(GetActorLocation(), PlayerTank->GetActorLocation());
-    if(DistToTank <= FireRange)
+
+    if( (DistToTank <= FireRange) && (PlayerTank->bAlive == true))
     {
         return true;
     }

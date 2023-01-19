@@ -30,6 +30,7 @@ public:
 	void HandleDestruction();
 
 	APlayerController* GetTankPlayerController() const{ return PlayerController; }
+
 private:	
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* TankCam;
@@ -64,6 +65,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
     class UInputAction* InputRotateTurret;
 
+	bool bAlive = true;
 	// Handle forward and backward movement inputs
 	void Move(const FInputActionValue& Value);	
 	// Handle inputs of turning of the tank  
