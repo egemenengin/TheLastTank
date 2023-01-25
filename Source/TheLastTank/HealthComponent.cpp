@@ -39,7 +39,7 @@ void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 
 void UHealthComponent::DamageHandler(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser)
 {
-	UE_LOG(LogTemp, Display, TEXT("Damaged Actor: %s , Damage: %f , DamageCauser: %s "), *(DamagedActor->GetName()), Damage, *(DamageCauser->GetName()));
+	//UE_LOG(LogTemp, Display, TEXT("Damaged Actor: %s , Damage: %f , DamageCauser: %s "), *(DamagedActor->GetName()), Damage, *(DamageCauser->GetName()));
 	
 	if(Damage <= 0.f) return;
 
@@ -51,6 +51,6 @@ void UHealthComponent::DamageHandler(AActor* DamagedActor, float Damage, const U
 			TheLastTankGameMode->ActorDied(DamagedActor);
 		}
 	}
-	UE_LOG(LogTemp, Display, TEXT("Damaged Actor: %s , Current Health: %f  "), *(DamagedActor->GetName()), CurrentHealth);
+	//UE_LOG(LogTemp, Display, TEXT("Damaged Actor: %s , Current Health: %f  "), *(DamagedActor->GetName()), CurrentHealth);
 }
 

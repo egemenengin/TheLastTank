@@ -65,14 +65,7 @@ void ABasePawn::Fire()
 		AProjectile* newProjectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass, SpawnLocation, SpawnRotation);
 		newProjectile->SetOwner(this);
 		
-		DrawDebugSphere(
-			GetWorld(), 
-			ProjectileSpawnPoint->GetComponentLocation(), 
-			20.f, 
-			12, 
-			FColor::Blue, 
-			false, 
-			5.f);
+		//DrawDebugSphere(GetWorld(), ProjectileSpawnPoint->GetComponentLocation(), 20.f, 12, FColor::Blue, false, 5.f);
 		
 	}
 	

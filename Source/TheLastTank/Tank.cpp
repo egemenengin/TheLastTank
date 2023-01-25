@@ -46,7 +46,7 @@ void ATank::Tick(float DeltaTime)
         bool IsHit = PlayerController->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, HitResult);
         if(IsHit)
         {
-            DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 20, 10, FColor::Red, false, -1.f);
+            //DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 20, 10, FColor::Red, false, -1.f);
             RotateTurret(HitResult.ImpactPoint, DeltaTime);
         }
 

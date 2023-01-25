@@ -6,6 +6,7 @@
 #include "Tank.h"
 #include "Tower.h"
 #include "TheLastTankPlayerController.h"
+
 void ATheLastTankGameMode::BeginPlay()
 {
     Super::BeginPlay();
